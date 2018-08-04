@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.MainActivity">
+
+  <SearchView
+      android:id="@+id/search"
+      android:queryHint="@string/query_hint"
+      android:iconifiedByDefault="false"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
+
+  <android.support.design.widget.CoordinatorLayout
+      android:id="@+id/layout_main"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+    <ListView
+        android:id="@+id/mylist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/ic_person_add_black_24dp"
+        android:layout_margin="16dp" />
+
+  </android.support.design.widget.CoordinatorLayout>
+
+</LinearLayout>
+
+

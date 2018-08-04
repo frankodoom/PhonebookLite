@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:orientation="vertical"
+    android:layout_marginTop="10dp"
+    android:padding="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="New Contact"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <EditText
+       android:id="@+id/Name"
+        android:fontFamily="sans-serif-condensed"
+        android:drawableLeft="@drawable/ic_person_green_24dp"
+        android:drawablePadding="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/name_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/phone"
+        android:fontFamily="sans-serif-condensed"
+        android:drawableLeft="@drawable/ic_phone_black_24dp"
+        android:drawablePadding="10dp"
+        android:layout_marginTop="10dp"
+        android:inputType="phone"
+        android:hint="@string/phone_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/Email"
+        android:fontFamily="sans-serif-condensed"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/ic_email_black_24dp"
+        android:layout_marginTop="10dp"
+        android:inputType="textEmailAddress"
+        android:hint="@string/email_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/save"
+        android:fontFamily="sans-serif-condensed"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
+        android:text="@string/button_save"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/cancel"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_marginLeft="10dp"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorWhite"
+            android:text="@string/button_cancel"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
