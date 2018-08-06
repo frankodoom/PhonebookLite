@@ -4,9 +4,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -47,12 +52,14 @@ public class ConatctsList extends AppCompatActivity implements SearchView.OnQuer
     private FrameLayout noData;
     private View view;
     private ImageView dial;
+    private TextView callerId;
 
     NoContact ns;
     private Menu menu;
     private MenuItem itemDelete, itemEdit;
     long selectId;
-    SharedPreferences sp;
+    private String tag;
+
 
 
     @Override
@@ -136,7 +143,6 @@ public class ConatctsList extends AppCompatActivity implements SearchView.OnQuer
                         String  _phone = phone.getText().toString();
                         String _email =email.getText().toString();
 
-
                         if(_name.isEmpty()){
                             name.setError("Name cannot be empty!");
                             return;
@@ -147,10 +153,12 @@ public class ConatctsList extends AppCompatActivity implements SearchView.OnQuer
                             return;
                         }
 
+                        tag = _name.substring(0,1);
                         boolean result =
-                                db.addStudent(_name,_phone,_email);
+                                db.addStudent(_name,_phone,_email, tag);
                         if(result == true){
                             alertDialog.hide();
+                            studentAdapter.contactName =_name;
                             Cursor newCursor = db.getAllStudents();
                             studentAdapter.changeCursor(newCursor);
                             CheckData();
@@ -272,6 +280,7 @@ public class ConatctsList extends AppCompatActivity implements SearchView.OnQuer
                 final EditText phone = editView.findViewById(R.id.phone);
                 final EditText email = editView.findViewById(R.id.Email);
 
+
                 final String userId = String.valueOf(selectId);
                 Cursor cs = db.getAllStudetById(userId);
                 if(cs.getCount()>=1){
@@ -283,6 +292,8 @@ public class ConatctsList extends AppCompatActivity implements SearchView.OnQuer
                     name.setText(_name);
                     phone.setText(_phone);
                     email.setText(_email);
+                    tag = _name.substring(0,1);
+
                 }
 
                 cs.close();
@@ -290,8 +301,9 @@ public class ConatctsList extends AppCompatActivity implements SearchView.OnQuer
                 update.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         db.UpdateStudent( userId ,name.getText().toString(),
-                        phone.getText().toString(),email.getText().toString());
+                        phone.getText().toString(),email.getText().toString(),tag);
                         Cursor eduitCursor = db.getAllStudents();
                         studentAdapter.changeCursor(eduitCursor);
                         CheckData();
@@ -314,4 +326,5 @@ public class ConatctsList extends AppCompatActivity implements SearchView.OnQuer
 
         return super.onOptionsItemSelected(item);
     }
+
 }

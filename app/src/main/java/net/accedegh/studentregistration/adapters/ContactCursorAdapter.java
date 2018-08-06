@@ -12,9 +12,13 @@ import net.accedegh.studentregistration.R;
 
 public class ContactCursorAdapter extends CursorAdapter {
 
+    public TextView contactIcon;
+    private Context _context;
+    public  String contactName;
 
     public ContactCursorAdapter(Context context, Cursor c) {
         super(context, c);
+        _context = context;
     }
 
     // The newView method is used to inflate a new view and return it,
@@ -34,13 +38,20 @@ public class ContactCursorAdapter extends CursorAdapter {
         TextView name =  view.findViewById(R.id.Name);
         TextView email = view.findViewById(R.id.Email);
         TextView phone = view.findViewById(R.id.Phone);
+        TextView tag  = view.findViewById(R.id.callerId);
 
         String Name = cursor.getString(cursor.getColumnIndexOrThrow("Name"));
         String Email = cursor.getString(cursor.getColumnIndexOrThrow("Email"));
         String Phone = cursor.getString(cursor.getColumnIndexOrThrow("Phone"));
+        String Tag = cursor.getString(cursor.getColumnIndexOrThrow("Tag"));
 
         name.setText(Name);
         email.setText(Email);
         phone.setText(Phone);
+        tag.setText(Tag);
+        //Set Random Color
+        //tag.setBackgroundColor(_context.getResources().getColor(R.color.colorPrimary));
+
     }
+
 }

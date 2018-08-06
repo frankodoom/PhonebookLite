@@ -14,6 +14,7 @@ public class StudentDbHelper extends SQLiteOpenHelper {
      private static final String COLUMN_NAME = "Name";
      private static final String COLUMN_PHONE ="Phone";
      private static final String COLUMN_EMAIL ="Email";
+    private static final String COLUMN_TAG ="Tag";
 
 
      public StudentDbHelper(Context context) {
@@ -25,7 +26,7 @@ public class StudentDbHelper extends SQLiteOpenHelper {
      public void onCreate(SQLiteDatabase db) {
 
         db.execSQL("create table Student " +
-                "(_id INTEGER PRIMARY KEY AUTOINCREMENT,Name Text,Phone Text, Email Text)");
+                "(_id INTEGER PRIMARY KEY AUTOINCREMENT,Name Text,Phone Text, Email Text, Tag Text)");
 
     }
 
@@ -36,12 +37,13 @@ public class StudentDbHelper extends SQLiteOpenHelper {
     }
 
 
-     public boolean addStudent(String name, String phone, String email) {
+     public boolean addStudent(String name, String phone, String email, String tag) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_NAME, name);
         cv.put(COLUMN_PHONE, phone);
         cv.put(COLUMN_EMAIL, email);
+        cv.put(COLUMN_TAG, tag);
         long result = db.insert(TABLE, null, cv);
         if(result == -1){
             return false;
@@ -83,13 +85,14 @@ public class StudentDbHelper extends SQLiteOpenHelper {
     }
 
 
-    public void UpdateStudent(String id, String name, String phone, String email){
+    public void UpdateStudent(String id, String name, String phone, String email, String tag){
       SQLiteDatabase db = getWritableDatabase();
       ContentValues cv = new ContentValues();
       String where = "_id=?";
       cv.put("Name", name);
       cv.put("Email", email);
       cv.put("Phone",phone);
+      cv.put("Tag",tag);
       db.update(TABLE,cv,"_id=?",new String[]{id});
   }
 }

@@ -61,5 +61,4 @@ public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentRecycler
         return studentList.size();
     }
 
-
 }
