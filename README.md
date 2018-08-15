@@ -18,9 +18,10 @@ A simple project for teaching Android Mobile Development.
 
 
 # Upcoming topics for PhonebookLite
-* Networking with Volley
+* Room
+* Networking-Volley
 * Content Providers
-* Authentication
-* Cloud Services
+* Authentication- Firebase Authenticaion
+* Cloud Services- Firebase Storage
 * JSON
 
