@@ -208,21 +208,21 @@ public class ConatctsList extends AppCompatActivity implements SearchView.OnQuer
         return false;
     }
 
-    public void CheckData(){
-        if(listView.getAdapter().getCount()==0){
+    public void CheckData() {
+        if (ns.getView() == null && listView.getAdapter().getCount() == 0) {
+
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.noDataFrame,ns)
+                    .add(R.id.noDataFrame, ns)
                     //.addToBackStack()
                     .commit();
-        }
-     else{
-           if(ns!=null){
-               getSupportFragmentManager()
-                       .beginTransaction().
-                       remove(ns).commit();
-           }
+        } else if (ns.getView() != null &&listView.getAdapter().getCount() >0) {
+            getSupportFragmentManager()
+                    .beginTransaction().
+                    remove(ns).commit();
+
         }
     }
+
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
